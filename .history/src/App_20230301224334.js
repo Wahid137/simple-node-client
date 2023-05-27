@@ -19,7 +19,7 @@ function App() {
     fetch('http://localhost:5000/users', {
       method: 'POST',
       headers: {
-        'content-type': "application/json"
+        'content-type': 'application/json'
       },
       body: JSON.stringify(user)
     })
@@ -29,7 +29,7 @@ function App() {
         const newUsers = [...users, data]
         setUsers(newUsers);
       })
-      .catch(error => console.log(error))
+      .catch(err => console.err(err))
     event.target.reset();
 
   }
@@ -45,11 +45,7 @@ function App() {
       <h2>Users: {users.length}</h2>
       <div>
         {
-          users.map(user => <p
-            key={user._id}
-          >
-            {user.name} {user.email}
-          </p>)
+          users.map(user => <p key={user.id}>{user.name} {user.email}</p>)
         }
       </div>
     </div>
